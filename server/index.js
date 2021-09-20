@@ -17,7 +17,7 @@ app.use(
 app.use(express.json());
 app.use(cors());
 
-const url = `mongodb+srv://mrasetina:avicii@stockdatabase.zylui.mongodb.net/StockDatabase?retryWrites=true&w=majority`;
+const url = `lol not gonna connect motherfucker`;
 
 mongoose.connect(
     url,
