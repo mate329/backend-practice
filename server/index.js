@@ -18,7 +18,7 @@ app.post('/insert', (req, res) => {
 
 app.get('getPrice/:stock', (req, res) => {
     const name = req.params.stock;
-    res.status(200).json( { message:`Price of the stock searched: ${database.find(name)}` });
+    res.status(200).json( { message:`Stock ${name} is in the database` });
 })
 
 app.get('*', (req, res) => {
