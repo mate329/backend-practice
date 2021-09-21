@@ -6,7 +6,8 @@ const router = express.Router();
 
 router.delete('/delete/:stock', async (req, res) => {
     try{
-        const name = req.params.stock;
+        const { name } = req.params;
+
         Stock.deleteOne({ name });
         res.status(200).json({ message:`Stock successfully deleted` });
 
@@ -17,16 +18,16 @@ router.delete('/delete/:stock', async (req, res) => {
 
 router.post('/insert', async (req, res) => {
     try{
-        const name = req.body.name;
-        const price = req.body.price;
-        const newStock = new Stock({
-            name: name,
-            price: price
-        });
+        const stockName = req.body.name;
+        const stockPrice = req.body.price;
+        // const { stockName, stockPrice } = req.body;
 
-        newStock.save().then(() => {
-            res.status(200).json({ message:`Added successfully` });
-        })
+        const newStock = new Stock({ stockName, stockPrice });
+
+        newStock.save()
+            .then(() => {
+                res.status(200).json({ message:`Added successfully` });
+            })
     }catch(error){
         console.log(error);
     }
@@ -48,8 +49,6 @@ router.get('/getprice/:stock', async (req, res) => {
     }
     
 });
-
-
 
 export default router;
 
